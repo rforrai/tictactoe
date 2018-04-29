@@ -30,6 +30,7 @@ jobs:
       - save_cache:
           paths:
             - ~/.gradle
+            - ~/.m2
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
       - store_artifacts:
