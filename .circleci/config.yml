@@ -26,27 +26,16 @@ jobs:
       - run: gradle dependencies
 
       - run: gradle test
+
       - run:
           name: Code coverage report
           command: |
             ./gradlew jacocoTestReport;
 
-      - run:
-          name: Creating Dummy Artifacts
-          command: |
-            echo "my artifact file" > /tmp/artifact-1;
-            mkdir /tmp/artifacts;
-            echo "my artifact files in a dir" > /tmp/artifacts/artifact-2;
+      - store_artifacts:
+          path: build/reports/junit/html/
+          destination: junit-test-report
 
       - store_artifacts:
-          path: /tmp/artifact-1
-          destination: artifact-file
-
-      - store_artifacts:
-          path: /tmp/artifacts
-
-      - store_artifacts:
-          path: ~/tictactoe/build/reports/junit/html/
-
-      - store_artifacts:
-          path: ~/tictactoe/build/reports/jacoco/html/
+          path: build/reports/jacoco/html/
+          destination: jacoco-test-report
