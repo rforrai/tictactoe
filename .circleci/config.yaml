@@ -26,9 +26,9 @@ jobs:
       - run: gradle test jacocoTestReport
 
       - store_artifacts:
-          path: build/reports/junit/html
+          path: tictactoe/build/reports/junit/html
           destination: junit-test-report
 
       - store_artifacts:
-          path: build/reports/jacoco/html
+          path: tictactoe/build/reports/jacoco/html
           destination: jacoco-test-report
