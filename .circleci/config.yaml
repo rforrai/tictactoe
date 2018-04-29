@@ -23,12 +23,13 @@ jobs:
             - ~/.gradle
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
-      - run: gradle test jacocoTestReport
+      - run: gradle test
+      - run: gradle jacocoTestReport
 
       - store_artifacts:
-          path: tictactoe/build/reports/junit/html
+          path: tictactoe/build/reports/junit/html/
           destination: junit-test-report
 
       - store_artifacts:
-          path: tictactoe/build/reports/jacoco/html
+          path: tictactoe/build/reports/jacoco/html/
           destination: jacoco-test-report
