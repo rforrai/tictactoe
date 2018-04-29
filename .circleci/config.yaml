@@ -28,8 +28,6 @@ jobs:
 
       - store_artifacts:
           path: tictactoe/build/reports/junit/html/
-          destination: junit-test-report
 
       - store_artifacts:
           path: tictactoe/build/reports/jacoco/html/
-          destination: jacoco-test-report
