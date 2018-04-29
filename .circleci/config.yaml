@@ -26,7 +26,10 @@ jobs:
           key: v1-dependencies-{{ checksum "build.gradle" }}
 
       - run: gradle test
-      - run: gradle jacocoTestReport
+      - run:
+        name: Code coverage report
+        command: |
+          ./gradlew jacocoTestReport
 
       - store_artifacts:
           path: ~/tictactoe/build/reports/junit/html/
