@@ -49,9 +49,12 @@ dependencies {
     val assertjVersion = "3.9.1"
 
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile("org.springframework:spring-webflux")
+    compile("io.projectreactor.ipc:reactor-netty")
     compile("com.fasterxml.jackson.module:jackson-module-kotlin")
     compile("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
     compile("org.jetbrains.kotlin:kotlin-reflect")
+
 
     testCompile("org.junit.platform:junit-platform-launcher:$junitPlatformLauncherVersion")
     testCompile("org.springframework.boot:spring-boot-starter-test")
