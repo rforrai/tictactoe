@@ -1,0 +1,9 @@
+@host = localhost
+@port = 18080
+
+### Health
+GET http://{{host}}:{{port}}/health
+
+
+
+
