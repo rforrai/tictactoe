@@ -76,6 +76,12 @@ class GameSpec : Spek({
 
                 assertThat(player?.mark).isEqualTo("O")
             }
+
+            it("throws exception when there are no players") {
+                assertThatThrownBy {
+                    Game().start().mark(Pair(1, 1))
+                }
+            }
         }
 
 

@@ -51,6 +51,10 @@ data class Game(
 
 
     private fun getNextPlayer(): Player? {
+        if(players.isEmpty()) {
+            throw IllegalArgumentException("No players in game!")
+        }
+
         val sorted = players.sortedBy { it.mark }
         val index = sorted.indexOf(activePlayer) + 1
 
