@@ -1,16 +1,13 @@
 package com.example.tictactoe
 
-import org.springframework.http.MediaType
-import org.springframework.web.reactive.function.BodyInserters
 import org.springframework.web.reactive.function.server.*
+import org.springframework.web.reactive.function.server.RequestPredicates.*
+import org.springframework.web.reactive.function.server.RouterFunctions.route
 
-class Router {
-    fun route(): RouterFunction<ServerResponse> {
-        return RouterFunctions.route(RequestPredicates.GET("/health"), HandlerFunction {
-            return@HandlerFunction ServerResponse.ok().contentType(MediaType.APPLICATION_JSON_UTF8) //
-                    .body(BodyInserters.fromObject("{status: OK}"))
-        })
-    }
+class Router(private val healthHandler: HealthHandler) {
 
+
+    fun route(): RouterFunction<ServerResponse> =
+            route(GET("/health"), HandlerFunction { healthHandler.health(it) })
 
 }

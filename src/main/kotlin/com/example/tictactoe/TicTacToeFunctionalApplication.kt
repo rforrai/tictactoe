@@ -11,6 +11,7 @@ import reactor.ipc.netty.http.server.HttpServer
  */
 class TicTacToeFunctionalApplication
 
+
 fun main(args: Array<String>) {
     startReactorServer(getHttpHandler())?.onClose()?.block()
 }
@@ -23,6 +24,9 @@ fun startReactorServer(httpHandler: HttpHandler): NettyContext? {
     return server.newHandler(adapter).block()
 }
 
+
 fun getHttpHandler(): HttpHandler {
-    return RouterFunctions.toHttpHandler(Router().route())
+    val healthHandler = HealthHandler()
+
+    return RouterFunctions.toHttpHandler(Router(healthHandler).route())
 }
