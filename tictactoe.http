@@ -5,5 +5,54 @@
 GET http://{{host}}:{{port}}/health
 
 
+### Start new game
+GET http://{{host}}:{{port}}/game/new
+
+
+### Add player to game
+POST http://{{host}}:{{port}}/game/player?mark=X&id=0
+Content-Type: application/json
+
+{
+  "board": {
+    "bound": {
+      "first": 2147483647,
+      "second": 2147483647
+    },
+    "tiles": [],
+    "empty": true
+  },
+  "players": [],
+  "activePlayer": null,
+  "empty": true
+}
+
+
+### Mark tile
+POST http://{{host}}:{{port}}//game/mark?x=1&y=2
+Content-Type: application/json
+
+{
+  "board": {
+    "bound": {
+      "first": 2147483647,
+      "second": 2147483647
+    },
+    "tiles": [],
+    "empty": true
+  },
+  "players": [
+    {
+      "mark": "X",
+      "id": 0
+    }
+  ],
+  "activePlayer": {
+    "mark": "X",
+    "id": 0
+  },
+  "empty": true
+}
+
 
 

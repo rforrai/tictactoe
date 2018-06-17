@@ -27,6 +27,7 @@ fun startReactorServer(httpHandler: HttpHandler): NettyContext? {
 
 fun getHttpHandler(): HttpHandler {
     val healthHandler = HealthHandler()
+    val gameHandler = GameHandler()
 
-    return RouterFunctions.toHttpHandler(Router(healthHandler).route())
+    return RouterFunctions.toHttpHandler(Router(healthHandler, gameHandler).route())
 }
