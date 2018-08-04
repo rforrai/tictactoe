@@ -29,6 +29,19 @@ val test by tasks.getting(Test::class) {
     reports {
         html.destination = file("$buildDir/reports/junit/html")
     }
+    filter {
+        includeTestsMatching("com.example.tictactoe.*")
+    }
+}
+
+createTask("teste2e", Test::class) {
+    useJUnitPlatform()
+    reports {
+        html.destination = file("$buildDir/reports/junite2e/html")
+    }
+    filter {
+        includeTestsMatching("com.example.e2e.*")
+    }
 }
 
 jacoco {
@@ -47,6 +60,7 @@ dependencies {
     val junitPlatformLauncherVersion = "1.1.1"
     val spekVersion = "1.1.5"
     val assertjVersion = "3.9.1"
+    val restAssuredVersion = "3.1.0"
 
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework:spring-webflux")
@@ -66,6 +80,7 @@ dependencies {
         exclude(group = "org.jetbrains.kotlin")
     }
     testCompile("org.assertj:assertj-core:$assertjVersion")
+    testCompile("io.rest-assured:rest-assured:$restAssuredVersion")
 }
 
 repositories {

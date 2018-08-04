@@ -20,7 +20,7 @@ fun main(args: Array<String>) {
 @Throws(InterruptedException::class)
 fun startReactorServer(httpHandler: HttpHandler): NettyContext? {
     val adapter = ReactorHttpHandlerAdapter(httpHandler)
-    val server = HttpServer.create("localhost", 18080)
+    val server = HttpServer.create("localhost", 8080)
     return server.newHandler(adapter).block()
 }
 
