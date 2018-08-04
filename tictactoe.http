@@ -29,7 +29,7 @@ Content-Type: application/json
 
 
 ### Mark tile
-POST http://{{host}}:{{port}}//game/mark?x=1&y=2
+POST http://{{host}}:{{port}}/game/mark?x=1&y=2
 Content-Type: application/json
 
 {
