@@ -32,19 +32,21 @@ class GameRestSpec : Spek({
                 val response = given()
                         .contentType(MediaType.APPLICATION_JSON.toString())
                         .body(
-                                "{\n" +
-                                        "  \"board\": {\n" +
-                                        "    \"bound\": {\n" +
-                                        "      \"first\": 2147483647,\n" +
-                                        "      \"second\": 2147483647\n" +
-                                        "    },\n" +
-                                        "    \"tiles\": [],\n" +
-                                        "    \"empty\": true\n" +
-                                        "  },\n" +
-                                        "  \"players\": [],\n" +
-                                        "  \"activePlayer\": null,\n" +
-                                        "  \"empty\": true\n" +
-                                        "}"
+                                """
+                                    {
+                                      "board": {
+                                        "bound": {
+                                          "first": 2147483647,
+                                          "second": 2147483647
+                                        },
+                                        "tiles": [],
+                                        "empty": true
+                                      },
+                                      "players": [],
+                                      "activePlayer": null,
+                                      "empty": true
+                                    }
+                                """
                         )
                         .post("/game/player?mark=X&id=0")
                         .then()
@@ -60,27 +62,29 @@ class GameRestSpec : Spek({
                 val response = given()
                         .contentType(MediaType.APPLICATION_JSON.toString())
                         .body(
-                                "{\n" +
-                                        "  \"board\": {\n" +
-                                        "    \"bound\": {\n" +
-                                        "      \"first\": 2147483647,\n" +
-                                        "      \"second\": 2147483647\n" +
-                                        "    },\n" +
-                                        "    \"tiles\": [],\n" +
-                                        "    \"empty\": true\n" +
-                                        "  },\n" +
-                                        "  \"players\": [\n" +
-                                        "    {\n" +
-                                        "      \"mark\": \"X\",\n" +
-                                        "      \"id\": 0\n" +
-                                        "    }\n" +
-                                        "  ],\n" +
-                                        "  \"activePlayer\": {\n" +
-                                        "    \"mark\": \"X\",\n" +
-                                        "    \"id\": 0\n" +
-                                        "  },\n" +
-                                        "  \"empty\": true\n" +
-                                        "}"
+                                """
+                                    {
+                                      "board": {
+                                        "bound": {
+                                          "first": 2147483647,
+                                          "second": 2147483647
+                                        },
+                                        "tiles": [],
+                                        "empty": true
+                                      },
+                                      "players": [
+                                        {
+                                          "mark": "X",
+                                          "id": 0
+                                        }
+                                      ],
+                                      "activePlayer": {
+                                        "mark": "X",
+                                        "id": 0
+                                      },
+                                      "empty": true
+                                    }
+                                """
                         )
                         .post("/game/mark?x=1&y=2")
                         .then()
