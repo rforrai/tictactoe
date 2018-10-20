@@ -1,12 +1,12 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 group = "com.example"
-version = "0.0.1-SNAPSHOT"
+version = "0.1.0-SNAPSHOT"
 
 plugins {
-    val kotlinVersion = "1.2.41"
-    val springBootVersion = "2.0.1.RELEASE"
-    val springDependencyManagementVersion = "1.0.5.RELEASE"
+    val kotlinVersion = "1.2.71"
+    val springBootVersion = "2.0.6.RELEASE"
+    val springDependencyManagementVersion = "1.0.6.RELEASE"
 
     java
     jacoco
@@ -34,18 +34,20 @@ val test by tasks.getting(Test::class) {
     }
 }
 
-createTask("teste2e", Test::class) {
-    useJUnitPlatform()
-    reports {
-        html.destination = file("$buildDir/reports/junite2e/html")
-    }
-    filter {
-        includeTestsMatching("com.example.e2e.*")
+tasks {
+    register("teste2e", Test::class) {
+        useJUnitPlatform()
+        reports {
+            html.destination = file("$buildDir/reports/junite2e/html")
+        }
+        filter {
+            includeTestsMatching("com.example.e2e.*")
+        }
     }
 }
 
 jacoco {
-    toolVersion = "0.8.1"
+    toolVersion = "0.8.2"
 }
 
 tasks {
@@ -57,10 +59,10 @@ tasks {
 }
 
 dependencies {
-    val junitPlatformLauncherVersion = "1.1.1"
+    val junitPlatformLauncherVersion = "1.3.1"
     val spekVersion = "1.1.5"
-    val assertjVersion = "3.9.1"
-    val restAssuredVersion = "3.1.0"
+    val assertjVersion = "3.11.1"
+    val restAssuredVersion = "3.1.1"
 
     compile("org.springframework.boot:spring-boot-starter-web")
     compile("org.springframework:spring-webflux")
